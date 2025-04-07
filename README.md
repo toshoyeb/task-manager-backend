@@ -2,6 +2,27 @@
 
 A RESTful API backend for a task management application built with Node.js, Express, TypeScript, and MongoDB.
 
+## Development
+
+- Install dependencies : `npm install`
+- Build the project: `npm run build`
+- Start production server: `npm start`
+
+
+## Deployment
+
+### Deployed on Render
+
+This API is currently deployed on Render, a cloud application hosting platform:
+
+- **Live API URL**: `https://task-manager-backend-8he0.onrender.com/api`
+- **Status Check**: `https://task-manager-backend-8he0.onrender.com`
+- **Platform**: [Render](https://render.com)
+- **Deployment Type**: Web Service
+- **Environment**: Node.js
+- **Build Command**: `npm install`
+- **Start Command**: `npm run dev`
+
 ## Features
 
 - **User Authentication**: Secure signup and login with JWT
@@ -137,19 +158,13 @@ task-manager-backend/
 └── package.json               # Project dependencies
 ```
 
-## Development
-
-- Build the project: `npm run build`
-- Start production server: `npm start`
-- Start development server with hot reload: `npm run watch`
-
 ## Testing API Endpoints
 
 You can test the API using tools like Postman or curl commands. Here's an example with curl:
 
 ```bash
 # Register a user
-curl -X POST http://localhost:5000/api/auth/register \
+curl -X POST https://task-manager-backend-8he0.onrender.com/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Test User",
@@ -158,7 +173,7 @@ curl -X POST http://localhost:5000/api/auth/register \
   }'
 
 # Login to get a token
-curl -X POST http://localhost:5000/api/auth/login \
+curl -X POST https://task-manager-backend-8he0.onrender.com/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "test@example.com",
@@ -166,7 +181,7 @@ curl -X POST http://localhost:5000/api/auth/login \
   }'
 
 # Create a task (replace TOKEN with your actual token)
-curl -X POST http://localhost:5000/api/tasks \
+curl -X POST https://task-manager-backend-8he0.onrender.com/api/tasks \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer TOKEN" \
   -d '{
