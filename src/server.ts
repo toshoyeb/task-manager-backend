@@ -1,9 +1,11 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { createServer } from "http";
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import taskRoutes from "./routes/taskRoutes";
+import { SocketServer } from "./socket/socketServer";
 
 // Load environment variables
 dotenv.config();
@@ -11,6 +13,12 @@ dotenv.config();
 // Initialize express
 const app: Express = express();
 const PORT = process.env.PORT ?? 5000;
+
+// Create HTTP server
+const httpServer = createServer(app);
+
+// Initialize Socket.IO server
+const socketServer = new SocketServer(httpServer);
 
 // Connect to MongoDB
 connectDB();
@@ -35,6 +43,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
